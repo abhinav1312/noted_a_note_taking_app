@@ -1,13 +1,83 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=Poppins:ital,wght@0,300;0,400;0,600;1,200;1,300&family=Raleway:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  font-family: 'Raleway', sans-serif;
+  font-size: 62.5%;
+}
+
+
+li{
+  align-items: center;
+}
+
+header{
+  height: 8rem;
+}
+
+section{
+  height: 90vh;
+
+}
+
+.btn{
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+}
+
+/*--------------------------- 
+---------LANDING PAGE--------
+-----------------------------*/
+.landing-img-wrapper{
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  padding: 5rem;
+}
+
+.outside{
+  display: flex;
+  /* animation: scroll 5s linear infinite; */
+  animation: landing-page-img-animate 20s linear infinite;
+  width: 500%;
+}
+
+.inside{
+  width: 20%;
+}
+
+.landing-img-wrapper img{
+  width: 80%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
+
+@keyframes landing-page-img-animate {
+  0%{
+    transform: translateX(0);
+  }
+  20%{
+    transform: translateX(-20%);
+  }
+  40%{
+    transform: translateX(-40%);
+  }
+  60%{
+    transform: translateX(-60%);
+  }
+  80%{
+    transform: translateX(-80%);
+  }
+  100%{
+    transform: translateX(0%);
+  }
 }

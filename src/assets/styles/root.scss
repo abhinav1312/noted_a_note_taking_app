@@ -1,0 +1,28 @@
+.active{
+    color: #f77f00;
+}
+
+.aside{
+    transition: all .2s ease-in ;
+}
+
+.aside>li{
+    cursor: pointer;
+    &:hover{
+        background-color: #8d99ae;
+    }
+}
+.hero-form-div{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.card:hover{
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.all-notes{
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+    
