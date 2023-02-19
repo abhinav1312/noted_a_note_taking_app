@@ -13,9 +13,7 @@ function Notes() {
     pinned: "pin",
     trash: "delete",
   }
-
-  const alertContext = useContext(AlertContext);
-  const setAlert = alertContext.setAlert
+  const handleAlert = useContext(AlertContext).handleAlert;
 
   const {category} = useParams();
   tooltips[category] = "un" + tooltips[category]
@@ -41,15 +39,8 @@ function Notes() {
         message = command;
       }
     }
-    handleAlertVisible(`Succesfully moved the note to ${message} section`);
+    handleAlert(`Succesfully moved the note to ${message} section`);
   }
-   const handleAlertVisible = (message) => {
-    setAlert(message);
-    setTimeout(() => {
-      setAlert(null);
-    }, 2000);
-   }
-
   return (
     <>
       <div className="all-notes p-20">

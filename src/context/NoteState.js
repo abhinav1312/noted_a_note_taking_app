@@ -1,6 +1,27 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import {collection, doc, getDocs, getDoc} from 'firebase/firestore'
+import {db} from '../firebaseConfig'
 import NoteContext from './NoteContext'
 const NoteState = (props) => {
+
+    const [users, setUsers] = useState()
+    useEffect(()=>{
+        const getNotes = async() => {
+            try{
+                
+                // const userCollectionRef = collection(db, 'users/userId/notes');
+                // const noteCategoryDocumentRef = doc(userCollectionRef, "children")
+                // const snapshot = await getDocs(noteCategoryDocumentRef);
+            }
+            catch(error){
+                console.log(error)
+            }
+        }
+        getNotes();
+    }, [])
+
+    // console.log(users)
+
     const [notes, setNotes] = useState(
         {
             all: [],
