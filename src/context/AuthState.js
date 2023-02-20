@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import { auth, provider, db } from "../firebaseConfig";
-// import {collection, getDocs} from 'firebase/firestore'
 import { signInWithPopup } from "firebase/auth";
 import AuthContext from "./AuthContext";
 import { collection, doc, getDoc, addDoc, setDoc } from "firebase/firestore";
 import AlertContext from "./AlertContext";
 
 const AuthState = (props) => {
-  // const AuthContext = useContext(AuthContext);
+  
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // alert context to for alert messages on signin/signout
-  const handleAlert = useContext(AlertContext).handleAlert;
+  const handleAlertMsg = useContext(AlertContext).handleAlertMsg;
   const handleNewUser = async (usersDocRef, notesDocRef, user) => {
     const allCollectionRef = collection(notesDocRef, "all");
     const pinnedCollectionRef = collection(notesDocRef, "pinned");
@@ -39,7 +37,7 @@ const AuthState = (props) => {
         addDoc(trashCollectionRef, sampleData),
       ]);
     } catch (error) {
-      console.log(error);
+      
     }
   };
   const handleSignin = async () => {
@@ -55,7 +53,7 @@ const AuthState = (props) => {
       }
       localStorage.setItem("demo-token", true);
       setIsLoggedIn(true);
-      handleAlert("User login successfull !")
+      handleAlertMsg("success", "User login successfull !")
     } catch (error) {
       console.log(error);
     }
@@ -65,7 +63,7 @@ const AuthState = (props) => {
   const handleSignout = () => {
     localStorage.clear();
     setIsLoggedIn(false);
-    handleAlert("Successfully logged out")
+    handleAlertMsg("success", "Successfully logged out")
   };
 
   useEffect(() => {

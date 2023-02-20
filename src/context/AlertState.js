@@ -3,17 +3,17 @@ import AlertContext from './AlertContext'
 
 
 const AlertState = (props) => {
-    const [alert, setAlert] = useState(null);
+    const [alertMsg, setAlertMsg] = useState({message: '', severity: ''});
 
-    const handleAlert = (message) => {
-      setAlert(message);
+    const handleAlertMsg = (severity, message) => {
+      setAlertMsg({severity: severity, message: message});
       setTimeout(() => {
-        setAlert(null);
+        setAlertMsg({message: '', severity: ''});
       }, 2000);
      }
   return (
     <>
-     <AlertContext.Provider value = {{alert, handleAlert}}>
+     <AlertContext.Provider value = {{alertMsg, handleAlertMsg}}>
         { props.children }
     </AlertContext.Provider> 
     </>

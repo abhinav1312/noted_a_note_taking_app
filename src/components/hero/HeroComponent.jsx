@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import HeroForm from "./HeroForm";
 import Template from "../random/Template";
 import Notes from "./Notes";
 
 const HeroComponent = () => {
+  
   return (
     <>
       <Template>

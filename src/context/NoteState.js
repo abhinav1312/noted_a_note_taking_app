@@ -1,20 +1,27 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import {collection, doc, getDocs, getDoc} from 'firebase/firestore'
 import {db} from '../firebaseConfig'
 import NoteContext from './NoteContext'
+import AuthContext from './AuthContext'
 const NoteState = (props) => {
 
-    const [users, setUsers] = useState()
+    const authContext = useContext(AuthContext);
+    const isLoggedIn = authContext.isLoggedIn;
+    const userId = authContext.userId;
+    
     useEffect(()=>{
         const getNotes = async() => {
-            try{
-                
-                // const userCollectionRef = collection(db, 'users/userId/notes');
-                // const noteCategoryDocumentRef = doc(userCollectionRef, "children")
-                // const snapshot = await getDocs(noteCategoryDocumentRef);
+            if(isLoggedIn){
+                try{
+
+                }
+                catch(error){
+                    console.log("Error occured while fetching data", error)
+                }
+
             }
-            catch(error){
-                console.log(error)
+            else{
+                
             }
         }
         getNotes();

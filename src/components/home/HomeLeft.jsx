@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const HomeLeft = () => {
+  const navigate = useNavigate();
   return (
     <div className="h-full flex flex-col justify-center">
       <h1 className="font-bold text-9xl text-lblue leading-tight">
@@ -16,11 +17,11 @@ const HomeLeft = () => {
       </p>
 
       {/* redirect to /main link on button click */}
-      <Link to="/hero">
-      <button className="btn bg-orange hover:bg-lblue text-white hover:text-orange w-1/2 h-20 rounded text-2xl font-bold tracking-widest">
+      {/* <NavLink to="/hero"> */}
+      <button className="btn bg-orange hover:bg-lblue text-white hover:text-orange w-1/2 h-20 rounded text-2xl font-bold tracking-widest" onClick={()=>navigate('/hero')}>
           Get Started
       </button>
-      </Link>
+      {/* </NavLink> */}
 
 
     </div>

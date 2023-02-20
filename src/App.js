@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./index.css";
 import Home from "./components/home/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -9,15 +9,18 @@ import "./assets/styles/root.scss";
 import NoteState from "./context/NoteState";
 import NotesCategoryWise from "./components/noteCategory/NotesCategoryWise";
 import AsideState from "./context/AsideState";
-import AlertState from "./context/AlertState";
-// import Signup from "./components/auth/signup/Signup";
-// import Login from "./components/auth/login/Login";
 import AuthState from "./context/AuthState";
+import Protected from "./components/auth/Protected";
+import AlertBox from "./components/random/AlertBox";
+import AlertContext from "./context/AlertContext";
 
 function App() {
+  const alertContext = useContext(AlertContext);
+  const alertMsg = alertContext.alertMsg.message;
+  const severity = alertContext.alertMsg.severity;
   return (
     <>
-    <AlertState>
+      <AlertBox alertMsg = {alertMsg} severity={severity} />
       <AuthState>
         <AsideState>
           <BrowserRouter>
@@ -32,29 +35,31 @@ function App() {
               <Route path="/contact" element={<Contact />} />
 
               {/* on clicking getting started divert to where the notes and to do list is present */}
-              <Route path="/hero">
-                <Route
+              <Route path="/hero" element={<Protected Component = {<NoteState> <HeroComponent /> </NoteState>} />} />
+                {/* <Route
                   index
                   element={
-                    <NoteState>
-                        <HeroComponent />
-                    </NoteState>
-                  }
-                />
+                    <Protected Component = {<NoteState><HeroComponent /></NoteState>} />
+                    // <NoteState>
+                    //     <HeroComponent />
+                    // </NoteState>
+                  } */}
+                {/* /> */}
                 <Route
-                  path=":category"
+                  path="/hero/:category"
                   element={
-                    <NoteState>
-                        <NotesCategoryWise />
-                    </NoteState>
+                    <Protected Component = {<NoteState><NotesCategoryWise /></NoteState>} />
+                    // <NoteState>
+                    //     <NotesCategoryWise />
+                    // </NoteState>
                   }
                 />
-              </Route>
+              {/* </Route> */}
             </Routes>
           </BrowserRouter>
         </AsideState>
       </AuthState>
-      </AlertState>
+      {/* </AlertState> */}
     </>
   );
 }

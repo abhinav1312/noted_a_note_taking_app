@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Card from '../card/Card'
 import noteContext from "../../context/NoteContext";
 import { useContext } from "react";
@@ -13,7 +13,7 @@ function Notes() {
     pinned: "pin",
     trash: "delete",
   }
-  const handleAlert = useContext(AlertContext).handleAlert;
+  const handleAlertMsg = useContext(AlertContext).handleAlertMsg;
 
   const {category} = useParams();
   tooltips[category] = "un" + tooltips[category]
@@ -39,7 +39,7 @@ function Notes() {
         message = command;
       }
     }
-    handleAlert(`Succesfully moved the note to ${message} section`);
+    handleAlertMsg('info', `Succesfully moved the note to ${message} section`);
   }
   return (
     <>

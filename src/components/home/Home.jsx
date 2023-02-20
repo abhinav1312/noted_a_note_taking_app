@@ -4,6 +4,7 @@ import HomeRight from "./HomeRight";
 import Header from "../partials/Header";
 
 const Home = () => {
+  
   return (
     <>
       <Header />
